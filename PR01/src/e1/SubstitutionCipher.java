@@ -21,11 +21,25 @@ public final class SubstitutionCipher {
         if (dict2.contains(String.valueOf(c)))
             usedDict = dict2;
 
-        if (usedDict != null)
-            for (int i = 0; i < usedDict.length(); i++){
-                if(c == usedDict.toCharArray()[i])
-                    returnedChar = usedDict.toCharArray()[i + key];
+        if (usedDict != null){
+            int bottom = 0;
+            int top = usedDict.length();
+
+            for (int i = 0; i <= top; i++){
+                if(c == usedDict.toCharArray()[i]) {
+                    int newI = i + key;
+
+                    // Si el nuevo índice esta fuera del vector, volver al inicio/final
+                    if (newI >= top)
+                        newI = newI - top;
+                    else if (newI < bottom)
+                        newI = top + newI;
+
+                    returnedChar = usedDict.toCharArray()[newI];
+                    break;
+                }
             }
+        }
 
         return returnedChar;
     }
@@ -50,7 +64,7 @@ public final class SubstitutionCipher {
 
     public static void main(String[] args) {
         int encodeKey = 3;
-        String originalText = "CESAR";
+        String originalText = "CESAR ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         System.out.println("Texto original: " + originalText);
 
         String encodedText = encode(encodeKey,  originalText);
