@@ -71,6 +71,6 @@ public final class SubstitutionCipher {
         System.out.println("Texto encodeado: " + encodedText);
 
         String reDecodedText = decode(encodeKey,   encodedText);
-        System.out.println("Texto decodado de nuevo: " + reDecodedText);
+        System.out.println("Texto decodeado de nuevo: " + reDecodedText);
     }
 }
