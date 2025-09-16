@@ -2,9 +2,15 @@ package e1;
 
 public final class SubstitutionCipher {
 
+    /*Declaración de diccionarios*/
     static final String dict1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     static final String dict2 = "abcdefghijklmnopqrstuvwxyz";
 
+    /**
+     * Intercambia un carácter por el correspondiente en el diccionario en orden del @param key
+     * @param c Carácter a intercambiar
+     * @param key valor de desplazamiento
+     * */
     private static char swap(char c, int key){
         String usedDict = null;
         char returnedChar = c;
@@ -25,21 +31,21 @@ public final class SubstitutionCipher {
     }
 
     public static String encode(int key, String text){
-        String encodedText = "";
+        StringBuilder encodedText = new StringBuilder();
 
         for (int i = 0; i < text.length(); i++){
-            encodedText += swap(text.charAt(i), key);
+            encodedText.append(swap(text.charAt(i), key));
         }
-        return encodedText;
+        return encodedText.toString();
     }
 
     public static String decode(int key, String text) {
-        String decodedText = "";
+        StringBuilder decodedText = new StringBuilder();
 
         for (int i = 0; i < text.length(); i++){
-            decodedText += swap(text.charAt(i), -key);
+            decodedText.append(swap(text.charAt(i), -key));
         }
-        return decodedText;
+        return decodedText.toString();
     }
 
     public static void main(String[] args) {
