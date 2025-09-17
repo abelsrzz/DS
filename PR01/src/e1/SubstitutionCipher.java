@@ -10,7 +10,7 @@ public final class SubstitutionCipher {
      * Intercambia un carácter por el correspondiente en el diccionario en orden del @param key
      * @param c Carácter a intercambiar
      * @param key valor de desplazamiento
-     * */
+     **/
     private static char swap(char c, int key){
         String usedDict = null;
         char returnedChar = c;
@@ -65,6 +65,7 @@ public final class SubstitutionCipher {
     public static void main(String[] args) {
         int encodeKey = 3;
         String originalText = "CESAR ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
         System.out.println("Texto original: " + originalText);
 
         String encodedText = encode(encodeKey,  originalText);
