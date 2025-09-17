@@ -63,6 +63,9 @@ public class Slope {
                 nextright++;
             }
             for (int i = 0; i < right; i++) {
+                if (nextright != slopeMap[0].length) {
+                    nextright++;
+                }
                 if (nextright == slopeMap[0].length) {
                     nextright = 0;
                 }
@@ -101,9 +104,11 @@ public class Slope {
                 nextright++;
             }
             for (int i = 0; i < right; i++) {
+                if (nextright != slopeMap[0].length) {
+                    nextright++;
+                }
                 if (nextright == slopeMap[0].length) {
                     nextright = 0;
-                    break;
                 }
             }
             for (int i = 0; i < down; i++) {
@@ -118,13 +123,21 @@ public class Slope {
 
     public static void main(String[] args) {
         char [][] slopeMap = {
-                {'#','#','#','#'},
-                {'#','#','#','#'},
-                {'#','#','#','#'},
-                {'#','#','#','#'}
+                {'.','.','#','#','.','.','.','.','.','.','.'},
+                {'#','.','.','.','#','.','.','.','#','.','.'},
+                {'.','#','.','.','.','.','#','.','.','#','.'},
+                {'.','.','#','.','#','.','.','.','#','.','#'},
+                {'.','#','.','.','.','#','#','.','.','#','.'},
+                {'.','.','#','.','#','#','.','.','.','.','.'},
+                {'.','#','.','#','.','#','.','.','.','.','#'},
+                {'.','#','.','.','.','.','.','.','.','.','#'},
+                {'#','.','#','#','.','.','.','#','.','.','.'},
+                {'#','.','.','.','#','#','.','.','.','.','#'},
+                {'.','#','.','.','#','.','.','.','#','.','#'}
+
         };
-        int right = 2;
-        int down = 2;
+        int right = 3;
+        int down = 1;
 
         System.out.println("Down the slope: " + downTheSlope (slopeMap , right , down));
         System.out.println("Jump the slope: " + jumpTheSlope (slopeMap , right , down));
