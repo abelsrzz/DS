@@ -1,39 +1,20 @@
 package e2;
 
 public class Slope {
-
-    private static boolean isNotCharAllowed(char[][] matrix) {
-        for (char[] chars : matrix) {
-            for (char aChar : chars) {
-                if (aChar != '.' && aChar != '#') {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    private static boolean isJagged(char[][] matrix) {
-        for (char[] chars : matrix) {
-            if (matrix[0].length != chars.length) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     private static void checkExceptions(char[][] slopeMap, int right, int down) {
-        if (slopeMap.length != slopeMap[0].length || isJagged(slopeMap)) {
-            throw new IllegalArgumentException("The matrix is not square");
-        }
+        for( int i = 0; i < slopeMap.length; i++ ){
+            if(slopeMap.length != slopeMap[i].length)
+                throw new IllegalArgumentException("The map is not square");
 
-        if (isNotCharAllowed(slopeMap)) {
-            throw new IllegalArgumentException("The matrix has characters other than \".\" and \"#\"");
+            for(int j = 0; j < slopeMap[i].length; j++)
+                if(slopeMap[i][j] != '#' && slopeMap[i][j] != '.')
+                    throw new IllegalArgumentException("The map has characters other than \".\" and \"#\"");
         }
+        if(right >= slopeMap[0].length || right < 1)
+            throw new IllegalArgumentException("Invalid 'right' value");
 
-        if (right >= slopeMap[0].length || 1 > right || down >= slopeMap.length || 1 > down) {
-            throw new IllegalArgumentException("The right, down or matrix size values are not allowed");
-        }
+        if(down >= slopeMap.length || down < 1)
+            throw new IllegalArgumentException("Invalid 'down' value");
     }
 
     /**
